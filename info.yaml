@@ -10,7 +10,7 @@ project: Test
     #- d_latch.v
     #- tt_um_seven_segment_seconds.v
     #- decoder.v
-  top_module:  "tt_um_d_latch"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+  top_module:  "d_latch"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
   tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
