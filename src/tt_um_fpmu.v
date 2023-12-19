@@ -21,7 +21,7 @@ module tt_um_fpmu(
     input  wire       rst_n     // reset_n - low to reset
 );
   
-  
+//  
   
   //internal data storage 
   reg [10:0] operand_a_mant;
@@ -38,36 +38,37 @@ module tt_um_fpmu(
   reg [0:0]  iresult_sign;
   
   //wire clk_alu;
-  
-  initial begin
-  operand_a_mant = 11'b10100001111;
-  operand_b_mant = 11'b10011110000;
-  operand_a_exp  = 5'b10010;
-  operand_b_exp  = 5'b10000;
-  operand_a_sign = 1'b0;
-  operand_b_sign = 1'b0;
-  end
+
+//  
+//  initial begin
+//  operand_a_mant = 11'b10100001111;
+//  operand_b_mant = 11'b10011110000;
+//  operand_a_exp  = 5'b10010;
+//  operand_b_exp  = 5'b10000;
+//  operand_a_sign = 1'b0;
+//  operand_b_sign = 1'b0;
+//  end
   
   //always @(posedge clk) begin // idea is to be prepared for downgrading internal clock for calculation
   //   clk_alu <= clk;
   //end
   
   // Sign multiplication
-  always @(posedge clk) begin
-     result_sign <= operand_a_sign ^ operand_b_sign;
-  end
+//  always @(posedge clk) begin
+//     result_sign <= operand_a_sign ^ operand_b_sign;
+//  end
   
   
   // Mantissa multiplication
-  always @(posedge clk) begin
-     iresult_mant <= operand_a_mant * operand_b_mant;
-  end
+//  always @(posedge clk) begin
+//     iresult_mant <= operand_a_mant * operand_b_mant;
+//  end
   
   
  // Exponentent addition
- always @(posedge clk) begin
-    iresult_exp <= operand_a_exp + operand_b_exp;
- end
+// always @(posedge clk) begin
+//    iresult_exp <= operand_a_exp + operand_b_exp;
+// end
  
  endmodule
  
