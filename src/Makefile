@@ -10,9 +10,9 @@ ifneq ($(GATES),yes)
 
 # this is the only part you should need to modify:
 #VERILOG_SOURCES += $(PWD)/tb.v $(PWD)/tt_um_seven_segment_seconds.v $(PWD)/decoder.v
-#VERILOG_SOURCES += $(PWD)/tt_um_fpmu.v
+VERILOG_SOURCES += $(PWD)/tt_um_test1.v
 #VERILOG_SOURCES += $(PWD)/tt_um_fpmu.v $(PWD)/decoder.v
-VERILOG_SOURCES += $(PWD)/tb.v $(PWD)/tt_um_seven_segment_seconds.v $(PWD)/decoder.v
+#VERILOG_SOURCES += $(PWD)/tb.v $(PWD)/tt_um_seven_segment_seconds.v $(PWD)/decoder.v
 
 else
 
