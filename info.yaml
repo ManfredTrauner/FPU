@@ -1,12 +1,11 @@
 --- 
 # Tiny Tapeout project information
-project: Test
+project:
   wokwi_id:    0        # If using wokwi, set this to your project's ID
 
 # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
 # Source files must be in ./src and you must list each source file separately
-  source_files:        #simulation files (tb files) are not needed here
-    #- tt_um_fpmu.v  
+  source_files:        
     - tt_um_seven_segment_seconds.v
     - decoder.v
   top_module:  "tt_um_seven_segment_seconds"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
@@ -22,10 +21,10 @@ yaml_version: 4
 #
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
 documentation: 
-  author:       "Manfred Trauner"      # Your name
-  title:        "testing D-LATCH"      # Project title
+  author:       "Matt Venn"      # Your name
+  title:        "7 segment seconds (Verilog Demo)"      # Project title
   language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  " "      # Short description of what your project does
+  description:  "Count up to 10, one second at a time."      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
@@ -33,7 +32,7 @@ documentation:
       to convert from binary to decimal for the display.
 
       Puts the bottom 8 bits of the counter on the bidirectional outputs.
-#
+
       With all the inputs set to 0, the internal 24 bit compare is set to 10,000,000. This means the
       counter will increment by one each second.
 
@@ -43,7 +42,7 @@ documentation:
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
-      After reset, the counter should increase by one every second with a 50MHz input clock.
+      After reset, the counter should increase by one every second with a 10MHz input clock.
       Experiment by changing the inputs to change the counting speed.
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
@@ -82,5 +81,5 @@ documentation:
   external_hw:  ""      # Describe any external hardware needed
   discord:      "mattvenn"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
-  clock_hz:     50000000       # Clock frequency in Hz (if required)
+  clock_hz:     10000000       # Clock frequency in Hz (if required)
   picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
