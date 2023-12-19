@@ -1,0 +1,74 @@
+// IEEE 754 
+// FP16 (float16) half-precision floating-point format
+// 1-bit sign
+// 5-bit exponent
+// 11-bit mantissa (10 bits are stored because of normalizsation
+
+// for first testing mantisa have got length of 11 bits
+// is used to check if fmpu is realizable with given contraints of 
+// maximal numbers of transistors
+
+
+
+module tt_um_fpmu(
+    input  wire [7:0] ui_in,    // Dedicated inputs - connected to the input switches
+    output wire [7:0] uo_out,   // Dedicated outputs - connected to the 7 segment display
+    input  wire [7:0] uio_in,   // IOs: Bidirectional Input path
+    output wire [7:0] uio_out,  // IOs: Bidirectional Output path
+    output wire [7:0] uio_oe,   // IOs: Bidirectional Enable path (active high: 0=input, 1=output)
+    input  wire       ena,      // will go high when the design is enabled
+    input  wire       clk,      // clock
+    input  wire       rst_n     // reset_n - low to reset
+);
+  
+//  
+  
+  //internal data storage 
+  reg [10:0] operand_a_mant;
+  reg [10:0] operand_b_mant;
+  reg [4:0]  operand_a_exp;  
+  reg [4:0]  operand_b_exp;
+  reg [0:0]  operand_a_sign;
+  reg [0:0]  operand_b_sign;
+  reg [21:0]  result_mant;     // max number of digits of 11 x 11 bit multiplication is 22 bit  
+  reg [5:0]   result_exp;      // max number of digits of 5 bit + 5 bit addition is 6 bit
+  reg [0:0]   result_sign;
+  reg [21:0] iresult_mant;
+  reg [5:0]  iresult_exp;
+  reg [0:0]  iresult_sign;
+  
+  //wire clk_alu;
+
+  
+  initial begin
+  operand_a_mant = 11'b10100001111;
+  operand_b_mant = 11'b10011110000;
+  operand_a_exp  = 5'b10010;
+  operand_b_exp  = 5'b10000;
+  operand_a_sign = 1'b0;
+  operand_b_sign = 1'b0;
+  end
+  
+  //always @(posedge clk) begin // idea is to be prepared for downgrading internal clock for calculation
+  //   clk_alu <= clk;
+  //end
+  
+  // Sign multiplication
+  always @(posedge clk) begin
+     result_sign <= operand_a_sign ^ operand_b_sign;
+  end
+  
+  
+  // Mantissa multiplication
+  always @(posedge clk) begin
+     iresult_mant <= operand_a_mant * operand_b_mant;
+  end
+  
+  
+ // Exponentent addition
+  always @(posedge clk) begin
+    iresult_exp <= operand_a_exp + operand_b_exp;
+  end
+ 
+endmodule
+ 

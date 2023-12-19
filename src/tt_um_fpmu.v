@@ -1,16 +1,6 @@
-// IEEE 754 
-// FP16 (float16) half-precision floating-point format
-// 1-bit sign
-// 5-bit exponent
-// 11-bit mantissa (10 bits are stored because of normalizsation
+`default_nettype none
 
-// for first testing mantisa have got length of 11 bits
-// is used to check if fmpu is realizable with given contraints of 
-// maximal numbers of transistors
-
-
-
-module tt_um_fpmu(
+module tt_um_seven_segment_seconds #( parameter MAX_COUNT = 24'd10_000_000 ) (
     input  wire [7:0] ui_in,    // Dedicated inputs - connected to the input switches
     output wire [7:0] uo_out,   // Dedicated outputs - connected to the 7 segment display
     input  wire [7:0] uio_in,   // IOs: Bidirectional Input path
@@ -20,55 +10,51 @@ module tt_um_fpmu(
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-  
-//  
-  
-  //internal data storage 
-  reg [10:0] operand_a_mant;
-  reg [10:0] operand_b_mant;
-  reg [4:0]  operand_a_exp;  
-  reg [4:0]  operand_b_exp;
-  reg [0:0]  operand_a_sign;
-  reg [0:0]  operand_b_sign;
-  reg [21:0]  result_mant;     // max number of digits of 11 x 11 bit multiplication is 22 bit  
-  reg [5:0]   result_exp;      // max number of digits of 5 bit + 5 bit addition is 6 bit
-  reg [0:0]   result_sign;
-  reg [21:0] iresult_mant;
-  reg [5:0]  iresult_exp;
-  reg [0:0]  iresult_sign;
-  
-  //wire clk_alu;
 
-//  
-//  initial begin
-//  operand_a_mant = 11'b10100001111;
-//  operand_b_mant = 11'b10011110000;
-//  operand_a_exp  = 5'b10010;
-//  operand_b_exp  = 5'b10000;
-//  operand_a_sign = 1'b0;
-//  operand_b_sign = 1'b0;
-//  end
-  
-  //always @(posedge clk) begin // idea is to be prepared for downgrading internal clock for calculation
-  //   clk_alu <= clk;
-  //end
-  
-  // Sign multiplication
-//  always @(posedge clk) begin
-//     result_sign <= operand_a_sign ^ operand_b_sign;
-//  end
-  
-  
-  // Mantissa multiplication
-//  always @(posedge clk) begin
-//     iresult_mant <= operand_a_mant * operand_b_mant;
-//  end
-  
-  
- // Exponentent addition
-// always @(posedge clk) begin
-//    iresult_exp <= operand_a_exp + operand_b_exp;
-// end
- 
- endmodule
- 
+//    wire reset = ! rst_n;
+//    wire [6:0] led_out;
+//    assign uo_out[6:0] = led_out;
+//    assign uo_out[7] = 1'b0;
+
+    // use bidirectionals as outputs
+//    assign uio_oe = 8'b11111111;
+
+    // put bottom 8 bits of second counter out on the bidirectional gpio
+//    assign uio_out = second_counter[7:0];
+
+    // external clock is 10MHz, so need 24 bit counter
+//    reg [23:0] second_counter;
+//    reg [3:0] digit;
+
+    // if external inputs are set then use that as compare count
+    // otherwise use the hard coded MAX_COUNT
+//    wire [23:0] compare = ui_in == 0 ? MAX_COUNT: {6'b0, ui_in[7:0], 10'b0};
+
+//    always @(posedge clk) begin
+        // if reset, set counter to 0
+//        if (reset) begin
+//            second_counter <= 0;
+//            digit <= 0;
+//        end else begin
+            // if up to 16e6
+//            if (second_counter == compare) begin
+                // reset
+//                second_counter <= 0;
+
+                // increment digit
+//                digit <= digit + 1'b1;
+
+                // only count from 0 to 9
+//                if (digit == 9)
+//                    digit <= 0;
+
+//            end else
+                // increment counter
+//                second_counter <= second_counter + 1'b1;
+//        end
+//    end
+
+    // instantiate segment display
+//    seg7 seg7(.counter(digit), .segments(led_out));
+
+endmodule
