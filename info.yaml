@@ -6,11 +6,11 @@ project: Test
 # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
 # Source files must be in ./src and you must list each source file separately
   source_files:        
-    - tt_um_d_latch.v # simualtion files (tb files) are not needed there
+    - tt_um_fpmu.v # simualtion files (tb files) are not needed there
     #- d_latch.v
     #- tt_um_seven_segment_seconds.v
     #- decoder.v
-  top_module:  "d_latch"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+  top_module:  "tt_um_fpmu"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
   tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
@@ -44,7 +44,7 @@ documentation:
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
-      After reset, the counter should increase by one every second with a 10MHz input clock.
+      After reset, the counter should increase by one every second with a 50MHz input clock.
       Experiment by changing the inputs to change the counting speed.
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
@@ -83,5 +83,5 @@ documentation:
   external_hw:  ""      # Describe any external hardware needed
   discord:      "mattvenn"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
-  clock_hz:     10000000       # Clock frequency in Hz (if required)
+  clock_hz:     50000000       # Clock frequency in Hz (if required)
   picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
