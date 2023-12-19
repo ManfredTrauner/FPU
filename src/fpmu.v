@@ -9,7 +9,7 @@
 // maximal numbers of transistors
 
 
-module fmpu (
+module fpmu (
   input wire       clk_alu,
   input reg [10:0] operand_a_mant,
   input reg [10:0] operand_b_mant,
@@ -24,7 +24,7 @@ module fmpu (
   
   //internal data storage 
   reg [21:0] iresult_mant;
-  reg [0:5]  iresult_exp;
+  reg [5:0]  iresult_exp;
   reg [0:0]  iresult_sign;
   
   
