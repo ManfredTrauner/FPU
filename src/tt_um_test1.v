@@ -13,7 +13,8 @@ module tt_um_test1 (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-
+    // use bidirectionals as outputs
+    assign uio_oe = 8'b11111111;
 
     wire reset = ! rst_n;
 
