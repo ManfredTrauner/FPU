@@ -8,7 +8,8 @@
 // is used to check if fmpu is realizable with given contraints of 
 // maximal numbers of transistors
 
-
+/* verilator lint_off UNUSEDSIGNAL */
+/* verilator lint_off UNDRIVEN */
 
 module tt_um_fpmu(
     input  wire [7:0] ui_in,    // Dedicated inputs - connected to the input switches
