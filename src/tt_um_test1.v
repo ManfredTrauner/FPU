@@ -15,15 +15,18 @@ module tt_um_test1 (
 
     // use bidirectionals as outputs
     assign uio_oe = 8'b11111111;
+    assign uio_out = 8'hFF;
+    assign uo_out = 8'hFF;
 
-    wire reset = ! rst_n;
+    wire reset;
+    assign reset = !rst_n;
 
     // external clock is 10MHz, so need 24 bit counter
     reg [23:0] second_counter;
     reg [3:0] digit;
 
  
-    always @(posedge clk) begin
+    always @(posedge clk or posedge reset) begin
         // if reset, set counter to 0
         if (reset) begin
             second_counter <= 0;
